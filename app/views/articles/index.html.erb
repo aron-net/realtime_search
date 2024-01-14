@@ -1,0 +1,19 @@
+<h1>All Articles</h1>
+
+<%= form_tag(articles_path, method: 'get') do %>
+  <%= text_field_tag   :search, params[:search], placeholder: 'Search articles...' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% if @articles.empty? && params[:search].present? %>
+  <p>No articles found with the title '<%= params[:search] %>'</p>
+<% else %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <strong>Title:</strong> <%= article.title %><br>
+        <strong>Paragraph:</strong> <%= article.paragraph %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
