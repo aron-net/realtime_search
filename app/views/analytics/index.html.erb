@@ -1,0 +1,28 @@
+<!-- app/views/analytics/index.html.erb -->
+
+<h1>Search Analytics</h1>
+<!-- ... -->
+<table>
+  <thead>
+    <tr>
+      <th>Search Query</th>
+      <th>Search Count</th>
+      <th>IP Address</th>
+      <th>Country</th>
+      <th>Operating System</th>
+      <th>Last Searched</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @search_logs.each do |log| %>
+      <tr>
+        <td><%= log.query %></td>
+        <td><%= log.search_count %></td>
+        <td><%= log.ip_address %></td>
+        <td><%= log.country %></td>
+        <td><%= log.operating_system %></td>
+        <td><%= log.last_searched.strftime('%Y-%m-%d %H:%M:%S UTC') if log.last_searched %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
